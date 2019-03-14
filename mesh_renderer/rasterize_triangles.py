@@ -20,12 +20,16 @@ from __future__ import print_function
 
 import os
 import tensorflow as tf
+import platform
 
 import camera_utils
 
-rasterize_triangles_module = tf.load_op_library(
-    os.path.join(os.environ['TEST_SRCDIR'],
-    'tf_mesh_renderer/mesh_renderer/kernels/rasterize_triangles_kernel.so'))
+libExt = '.so'
+
+if platform.system() == 'Windows':
+  libExt = '.dll'
+
+rasterize_triangles_module = tf.load_op_library(rasterize_triangles_kernel' + libExt)
 
 
 def rasterize(world_space_vertices, attributes, triangles, camera_matrices,

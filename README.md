@@ -40,6 +40,30 @@ The script calls the Bazel rules using the Python interpreter at
 `$VIRTUAL_ENV/bin/python`. If you aren't using virtualenv, `bazel test ...` may
 be sufficient.
 
+How to Build for Windows
+------------
+Tested with Py3.5 & 3.6 with Tensorflow 1.11
+
+TensorFlow for Windows does not come with the required TensorFlow framework file, so this needs to be built prior to building TF Mesh Render.
+
+The simplest way to build TF Mesh Render on Windows is to:
+  1. copy the *.c and *.h files in to tensorflow\core\userops
+  2. Create a BUILD file in that directory containing the following text:
+      
+      load("//tensorflow:tensorflow.bzl", "tf_custom_op_library")
+ 
+      tf_custom_op_library(
+        name = "rasterize_triangles_kernel.dll",
+        srcs = ["rasterize_triangles_grad.cc",
+            "rasterize_triangles_op.cc",
+            "rasterize_triangles_impl.cc",
+            "rasterize_triangles_impl.h"],
+      )
+
+  3. Run: bazel build --config=opt //tensorflow/core/user_ops:rasterize_triangles_kernel.dll
+  4. Copy the resultant .dll file to tf_mesh_renderer\mesh_renderer, so it is along side the .py files
+  5. Run makeWhl.bat to create a pip installable whl file
+
 Citation
 --------
 
