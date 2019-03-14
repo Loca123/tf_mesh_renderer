@@ -120,8 +120,8 @@ class RasterizeTrianglesImplTest : public ::testing::Test {
 };
 
 TEST_F(RasterizeTrianglesImplTest, CanRasterizeTriangle) {
-  const std::vector<float> vertices = {-0.5, -0.5, 0.8, 1.0,  0.0, 0.5,
-                                       0.3,  1.0,  0.5, -0.5, 0.3, 1.0};
+  const std::vector<float> vertices = {-0.5f, -0.5f, 0.8f, 1.0f,  0.0f, 0.5f,
+                                       0.3f,  1.0f,  0.5f, -0.5f, 0.3f, 1.0f};
   const std::vector<int32> triangles = {0, 1, 2};
 
   CallRasterizeTrianglesImpl(vertices.data(), triangles.data(), 1);
@@ -130,8 +130,8 @@ TEST_F(RasterizeTrianglesImplTest, CanRasterizeTriangle) {
 }
 
 TEST_F(RasterizeTrianglesImplTest, CanRasterizeExternalTriangle) {
-  const std::vector<float> vertices = {-0.5, -0.5, 0.0, 1.0,  0.0, -0.5,
-                                       0.0,  -1.0, 0.5, -0.5, 0.0, 1.0};
+  const std::vector<float> vertices = {-0.5f, -0.5f, 0.0f, 1.0f,  0.0f, -0.5f,
+                                       0.0f,  -1.0f, 0.5f, -0.5f, 0.0f, 1.0f};
   const std::vector<int32> triangles = {0, 1, 2};
 
   CallRasterizeTrianglesImpl(vertices.data(), triangles.data(), 1);
@@ -143,9 +143,9 @@ TEST_F(RasterizeTrianglesImplTest, CanRasterizeExternalTriangle) {
 
 TEST_F(RasterizeTrianglesImplTest, CanRasterizeCameraInsideBox) {
   const std::vector<float> vertices = {
-      -1.0, -1.0, 0.0, 2.0, 1.0, -1.0, 0.0,  2.0, 1.0,  1.0, 0.0,
-      2.0,  -1.0, 1.0, 0.0, 2.0, -1.0, -1.0, 0.0, -2.0, 1.0, -1.0,
-      0.0,  -2.0, 1.0, 1.0, 0.0, -2.0, -1.0, 1.0, 0.0,  -2.0};
+      -1.0f, -1.0f, 0.0f, 2.0f, 1.0f, -1.0f, 0.0f,  2.0f, 1.0f,  1.0f, 0.0f,
+      2.0f,  -1.0f, 1.0f, 0.0f, 2.0f, -1.0f, -1.0f, 0.0f, -2.0f, 1.0f, -1.0f,
+      0.0f,  -2.0f, 1.0f, 1.0f, 0.0f, -2.0f, -1.0f, 1.0f, 0.0f,  -2.0f};
   const std::vector<int32> triangles = {0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7,
                                         2, 3, 7, 2, 7, 6, 1, 0, 4, 1, 4, 5,
                                         0, 3, 7, 0, 7, 4, 1, 2, 6, 1, 6, 5};
@@ -158,9 +158,9 @@ TEST_F(RasterizeTrianglesImplTest, CanRasterizeCameraInsideBox) {
 }
 
 TEST_F(RasterizeTrianglesImplTest, CanRasterizeTetrahedron) {
-  const std::vector<float> vertices = {-0.5, -0.5, 0.8, 1.0,  0.0, 0.5,
-                                       0.3,  1.0,  0.5, -0.5, 0.3, 1.0,
-                                       0.0,  0.0,  0.0, 1.0};
+  const std::vector<float> vertices = {-0.5f, -0.5f, 0.8f, 1.0f,  0.0f, 0.5f,
+                                       0.3f,  1.0f,  0.5f, -0.5f, 0.3f, 1.0f,
+                                       0.0f,  0.0f,  0.0f, 1.0f};
   const std::vector<int32> triangles = {0, 2, 1, 0, 1, 3, 1, 2, 3, 2, 0, 3};
 
   CallRasterizeTrianglesImpl(vertices.data(), triangles.data(), 4);
@@ -174,14 +174,14 @@ TEST_F(RasterizeTrianglesImplTest, CanRasterizeCube) {
   // Vertex values were obtained by dumping the clip-space vertex values from
   // the renderSimpleCube test in ../rasterize_triangles_test.py.
   const std::vector<float> vertices = {
-      -2.60648608, -3.22707772,  6.85085106, 6.85714293,
-      -1.30324292, -0.992946863, 8.56856918, 8.5714283,
-      -1.30324292, 3.97178817,   7.70971,    7.71428585,
-      -2.60648608, 1.73765731,   5.991992,   6,
-      1.30324292,  -3.97178817,  6.27827835, 6.28571415,
-      2.60648608,  -1.73765731,  7.99599648, 8,
-      2.60648608,  3.22707772,   7.13713741, 7.14285707,
-      1.30324292,  0.992946863,  5.41941929, 5.4285717};
+      -2.60648608f, -3.22707772f,  6.85085106f, 6.85714293f,
+      -1.30324292f, -0.992946863f, 8.56856918f, 8.5714283f,
+      -1.30324292f, 3.97178817f,   7.70971f,    7.71428585f,
+      -2.60648608f, 1.73765731f,   5.991992f,   6.0f,
+      1.30324292f,  -3.97178817f,  6.27827835f, 6.28571415f,
+      2.60648608f,  -1.73765731f,  7.99599648f, 8.0f,
+      2.60648608f,  3.22707772f,   7.13713741f, 7.14285707f,
+      1.30324292f,  0.992946863f,  5.41941929f, 5.4285717f};
 
   const std::vector<int32> triangles = {0, 1, 2, 2, 3, 0, 3, 2, 6, 6, 7, 3,
                                         7, 6, 5, 5, 4, 7, 4, 5, 1, 1, 0, 4,
@@ -201,8 +201,8 @@ TEST_F(RasterizeTrianglesImplTest, WorksWhenPixelIsOnTriangleEdge) {
   const float x_ndc = 0.0;
   constexpr int yPixel = 5;
 
-  const std::vector<float> vertices = {x_ndc, -1.0, 0.5, 1.0,  x_ndc, 1.0,
-                                       0.5,   1.0,  0.5, -1.0, 0.5,   1.0};
+  const std::vector<float> vertices = {x_ndc, -1.0f, 0.5f, 1.0f,  x_ndc, 1.0f,
+                                       0.5f,   1.0f,  0.5f, -1.0f, 0.5f,   1.0f};
   {
     const std::vector<int32> triangles = {0, 1, 2};
 
@@ -223,9 +223,9 @@ TEST_F(RasterizeTrianglesImplTest, WorksWhenPixelIsOnTriangleEdge) {
 TEST_F(RasterizeTrianglesImplTest, CoversEdgePixelsOfImage) {
   // Verifies that the pixels along image edges are correct covered.
 
-  const std::vector<float> vertices = {-1.0, -1.0, 0.0, 1.0, 1.0, -1.0,
-                                       0.0,  1.0,  1.0, 1.0, 0.0, 1.0,
-                                       -1.0, 1.0,  0.0, 1.0};
+  const std::vector<float> vertices = {-1.0f, -1.0f, 0.0f, 1.0f, 1.0f, -1.0f,
+                                       0.0f,  1.0f,  1.0f, 1.0f, 0.0f, 1.0f,
+                                       -1.0f, 1.0f,  0.0f, 1.0f};
   const std::vector<int32> triangles = {0, 1, 2, 0, 2, 3};
 
   CallRasterizeTrianglesImpl(vertices.data(), triangles.data(), 2);
@@ -241,8 +241,8 @@ TEST_F(RasterizeTrianglesImplTest, PixelOnDegenerateTriangleIsNotInside) {
   // counted as lying outside the triangle.
   image_width_ = 1;
   image_height_ = 1;
-  const std::vector<float> vertices = {-1.0, -1.0, 0.0, 1.0, 1.0, 1.0,
-                                       0.0,  1.0,  0.0, 0.0, 0.0, 1.0};
+  const std::vector<float> vertices = {-1.0f, -1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+                                       0.0f,  1.0f,  0.0f, 0.0f, 0.0f, 1.0f};
   const std::vector<int32> triangles = {0, 1, 2};
 
   CallRasterizeTrianglesImpl(vertices.data(), triangles.data(), 1);
