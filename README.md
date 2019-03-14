@@ -50,7 +50,8 @@ The simplest way to build TF Mesh Render on Windows is to:
   1. copy the *.c and *.h files in to tensorflow\core\userops
   2. Create a BUILD file in that directory containing the following text:
       
-      `load("//tensorflow:tensorflow.bzl", "tf_custom_op_library")
+      ```
+      load("//tensorflow:tensorflow.bzl", "tf_custom_op_library")
  
       tf_custom_op_library(
         name = "rasterize_triangles_kernel.dll",
@@ -58,7 +59,8 @@ The simplest way to build TF Mesh Render on Windows is to:
             "rasterize_triangles_op.cc",
             "rasterize_triangles_impl.cc",
             "rasterize_triangles_impl.h"],
-      )`
+      )
+      ```
 
   3. Run: `bazel build --config=opt //tensorflow/core/user_ops:rasterize_triangles_kernel.dll`
   4. Copy the resultant .dll file to tf_mesh_renderer\mesh_renderer, so it is along side the .py files
